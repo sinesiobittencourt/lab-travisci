@@ -2,7 +2,9 @@
 # deploy.sh
 set -e
 
-sudo apt-get install -y lftp
+sudo apt-get install git-ftp
+
 
 # deployment via ftp upload. Using FTPS for that
-lftp -c "set ftps:initial-prot ''; set ftp:ssl-force true; set ftp:ssl-protect-data true; open ftp://$FTP_USER:$FTP_PASS@$FTP_HOST:21; mirror -eRv public .; quit;"
+git ftp init --user $FTP_USER --passwd $FTP_PASS ftp://$FTP_HOST/public_html/lab-travisci.devopszone.net
+
