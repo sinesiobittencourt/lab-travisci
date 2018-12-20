@@ -1,18 +1,24 @@
 # .travis.yml
 dist: xenial
 sudo: required
+node_js:
+ - node
 
-before_install:
-  - sudo apt-get install -y git-ftp
-addons:
-  apt:
-    update: true
+   #before_install:
+   # - sudo apt-get install -y git-ftp
+   #addons:
+   #  apt:
+   #    update: true
 
 install:
  - wget -O /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-64bit.deb
  - sudo dpkg -i /tmp/hugo.deb
 
+before_script:
+ - npm install -g --silent
+
 script:
+ - gulp build --prod
  - hugo
  - cd $TRAVIS_BUILD_DIR
  - chmod +x deploy.sh
