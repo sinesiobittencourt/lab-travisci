@@ -8,10 +8,11 @@ install:
 
 script:
  - hugo
-
+ - cd $TRAVIS_BUILD_DIR
+ - chmod +x deploy.sh
 deploy:
   - provider: script
-    script: "./deploy.sh"
+    script: ./deploy.sh
     skip_cleanup: true
     on:
       branch: master
