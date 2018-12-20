@@ -1,6 +1,6 @@
-languageCode = "pt-br"
+languageCode = "en-us"
 title = "Lab TravisCI HostGator"
-baseurl = "http://lab-travisci.devopszone.net"
+baseurl = "https://lab-travisci.devopszone.net"
 theme = "hugo-future-imperfect"
 
 [params]
