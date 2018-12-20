@@ -1,9 +1,10 @@
 # .travis.yml
 dist: xenial
 sudo: required
+language: node_js
 node_js:
- - node
-
+ - "lts/*"
+              
    #before_install:
    # - sudo apt-get install -y git-ftp
    #addons:
@@ -15,10 +16,12 @@ install:
  - sudo dpkg -i /tmp/hugo.deb
 
 before_script:
- - npm install -g --silent
+ - npm install -g 
+ - bower install
+ - npm install -g gulp-cli  
 
 script:
- - gulp build --prod
+ - gulp build
  - hugo
  - cd $TRAVIS_BUILD_DIR
  - chmod +x deploy.sh
